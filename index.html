@@ -27,16 +27,72 @@ body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:radial-g
 .storyline strong{color:var(--gold)}
 @media(max-width:560px){.story-scene{align-items:flex-start;flex-direction:column;gap:12px;min-height:0}.scene-art{font-size:54px}}
 
+
+/* HYBRID MOTION UPGRADE: pixel characters over cinematic animated worlds */
+body{overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;opacity:.5;
+ background:
+ radial-gradient(circle at 15% 25%,#8edce522 0 1px,transparent 2px),
+ radial-gradient(circle at 75% 18%,#ffd27a33 0 1.5px,transparent 3px),
+ radial-gradient(circle at 62% 72%,#ffffff22 0 1px,transparent 2px);
+ background-size:83px 79px,127px 111px,59px 67px;
+ animation:starDrift 34s linear infinite}
+@keyframes starDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-90px,70px,0)}}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;
+ background:radial-gradient(ellipse at 50% 45%,var(--world-glow,#77e6df22),transparent 65%);
+ transition:background 1s ease}
+body[data-level="1"]{--world-glow:#367bcf55}
+body[data-level="2"]{--world-glow:#b67bdb44}
+body[data-level="3"]{--world-glow:#7cbd6455}
+body[data-level="4"]{--world-glow:#a15ce955}
+body[data-level="5"]{--world-glow:#e17cbd55}
+body[data-level="6"],body[data-level="ending"]{--world-glow:#ffd27a66}
+.screen{transform-origin:50% 30%}
+.screen.active{animation:cinematicEnter .75s cubic-bezier(.2,.75,.2,1)}
+@keyframes cinematicEnter{0%{opacity:0;transform:translateY(18px) scale(.985);filter:blur(5px)}65%{filter:blur(0)}100%{opacity:1;transform:none}}
+.screen.leaving{animation:cinematicExit .35s ease forwards}
+@keyframes cinematicExit{to{opacity:0;transform:translateY(-9px) scale(1.01);filter:blur(3px)}}
+.story-scene{isolation:isolate;min-height:190px;background:
+ radial-gradient(ellipse at 20% 110%,#77e6df18,transparent 55%),
+ linear-gradient(125deg,#1b2b4c,#0a1123 75%);transition:background 1s,border-color 1s}
+.story-scene:after{content:"";position:absolute;inset:-40% -20%;z-index:0;pointer-events:none;
+ background:linear-gradient(110deg,transparent 38%,#ffffff0b 49%,transparent 60%);
+ transform:translateX(-65%);animation:lightSweep 8s ease-in-out infinite}
+@keyframes lightSweep{0%,35%{transform:translateX(-70%)}75%,100%{transform:translateX(70%)}}
+.scene-art{animation:characterFloat 3.2s ease-in-out infinite;filter:drop-shadow(0 0 13px #77e6df66);transform-origin:50% 70%}
+.scene-art:after{content:"";display:block;height:5px;width:72%;margin:13px auto 0;background:#77e6df33;filter:blur(5px);border-radius:50%;animation:shadowPulse 3.2s ease-in-out infinite}
+@keyframes characterFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes shadowPulse{0%,100%{transform:scaleX(.85);opacity:.45}50%{transform:scaleX(1.15);opacity:.9}}
+.story-scene:before{animation:sceneStars 16s linear infinite}
+@keyframes sceneStars{from{background-position:0 0,0 0,0 0}to{background-position:67px 61px,-89px 73px,43px -59px}}
+body[data-level="1"] .story-scene{background:radial-gradient(ellipse at 50% 120%,#2865a755,transparent 60%),linear-gradient(135deg,#1b3158,#080f20)}
+body[data-level="2"] .story-scene{background:radial-gradient(ellipse at 75% 20%,#9b62b655,transparent 45%),linear-gradient(135deg,#30234d,#101329)}
+body[data-level="3"] .story-scene{background:radial-gradient(ellipse at 18% 100%,#6e9c3c66,transparent 55%),linear-gradient(135deg,#203b36,#101a24)}
+body[data-level="4"] .story-scene{background:radial-gradient(ellipse at 80% 0%,#a15ce955,transparent 50%),linear-gradient(135deg,#30204b,#101329)}
+body[data-level="5"] .story-scene{background:radial-gradient(ellipse at 50% 50%,#d66fb855,transparent 55%),linear-gradient(135deg,#392449,#101329)}
+body[data-level="6"] .story-scene,body[data-level="ending"] .story-scene{background:radial-gradient(ellipse at 50% 50%,#ffd27a55,transparent 58%),linear-gradient(135deg,#44334a,#121a30)}
+body[data-level="3"] .scene-art{animation:characterFloat 1.6s ease-in-out infinite}
+body[data-level="4"] .scene-art{animation:characterFloat 2.2s ease-in-out infinite}
+body[data-level="5"] .scene-art{animation:portalPulse 2.8s ease-in-out infinite}
+@keyframes portalPulse{0%,100%{transform:scale(.96) rotate(-2deg);filter:drop-shadow(0 0 8px #d78bff66)}50%{transform:scale(1.06) rotate(2deg);filter:drop-shadow(0 0 24px #e8aaffcc)}}
+body[data-level="6"] .scene-art,body[data-level="ending"] .scene-art{animation:reunionGlow 2s ease-in-out infinite}
+@keyframes reunionGlow{0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 10px #ffd27a77)}50%{transform:translateY(-8px) scale(1.08);filter:drop-shadow(0 0 28px #ffd27acc)}}
+.feedback.good{animation:successFlash .6s ease}
+@keyframes successFlash{0%{text-shadow:0 0 0 transparent}45%{text-shadow:0 0 18px #a7dfbdcc}100%{text-shadow:none}}
+.btn{transition:transform .16s,filter .2s,box-shadow .2s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body><div class="scanlines"></div><button class="sound" id="soundBtn" type="button" aria-pressed="false" onclick="toggleMusic()">♫ MUSIC: OFF</button><main class="wrap">
 <div class="top"><span class="brand">A small experiment</span><span id="counter">NOT YET STARTED</span></div><div class="progress"><div class="bar" id="bar"></div></div>
-<section class="screen active" id="intro"><div class="hero"><div class="eyebrow">ONE CAPTAIN · FIVE EXPERIMENTS · ONE VERY IMPORTANT RESCUE</div><h1>The Little<br><span>Sugar</span> Experiment</h1><p class="sub">Earth is falling to the zombies. Vy has been taken beyond the stars. Captain J is coming for his Little Sugar — but the way home is locked behind five experiments.</p><div class="meta"><span class="pill">SUBJECT · PROF JONATHAN</span><span class="pill">RESEARCH ASSISTANT · LITTLE SUGAR</span><span class="pill">6 EXPERIMENTS</span></div><p class="muted">Six obstacles. Six discoveries. One rescue mission.</p><p class="small">Soundtrack available · switch on ♫ MUSIC to begin the 8-bit score.</p><button class="btn" onclick="startGame()">Begin the experiment ↗</button></div></section>
-<section class="screen" id="level1"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 01 / 05</span><span class="pill">RECURSIVE STRUCTURES</span></div><h2>The jump-drive sequence</h2>
+<section class="screen active" id="intro"><div class="hero"><div class="eyebrow">ONE CAPTAIN · SIX EXPERIMENTS · ONE VERY IMPORTANT RESCUE</div><h1>The Little<br><span>Sugar</span> Experiment</h1><p class="sub">Earth is falling to the zombies. Vy has been taken beyond the stars. Captain J is coming for his Little Sugar — but the way home is locked behind six experiments.</p><div class="meta"><span class="pill">SUBJECT · PROF JONATHAN</span><span class="pill">RESEARCH ASSISTANT · LITTLE SUGAR</span><span class="pill">6 EXPERIMENTS</span></div><p class="muted">Six obstacles. Six discoveries. One rescue mission.</p><p class="small">Soundtrack available · switch on ♫ MUSIC to hear six original 8-bit soundtracks.</p><button class="btn" onclick="startGame()">Begin the experiment ↗</button></div></section>
+<section class="screen" id="level1"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 01 / 06</span><span class="pill">RECURSIVE STRUCTURES</span></div><h2>The jump-drive sequence</h2>
 <div class="story-scene"><div class="scene-art">🚀 ✦ 🌌</div><div class="scene-copy"><div class="scene-label">MISSION LOG 01 · DEEP SPACE</div><p>Captain J has launched from Earth. The jump-drive is counting through a recursive sequence, but its next coordinate is missing. Recover the seventh term to stabilise the first space jump.</p></div></div>
 <div class="storyline"><strong>TRANSMISSION FROM VY:</strong> “If you can hear this, Captain, I’m still out here. Please don’t take the scenic route.”</div>
 <p class="muted">The navigation engine follows a recursive rule. Recover the next state.</p><div class="equation">1, 4, 15, 64, 325, 1956, ?</div><p class="question">For n = 2, 3, 4, ... each term is generated by aₙ = n(aₙ₋₁ + 1), with a₁ = 1. What is the seventh term?</p><input class="field" id="a1" inputmode="numeric" placeholder="Enter an integer…" onkeydown="if(event.key==='Enter')check(1)"><div class="actions"><button class="btn" onclick="check(1)">Submit answer</button><button class="btn secondary" onclick="hint(1)">Hint 01</button><button class="btn secondary" onclick="hint2(1)">Hint 02</button></div><div class="hint" id="h1">The transition from a₆ to a₇ uses n = 7.</div><div class="hint" id="h1b">Apply aₙ = n(aₙ₋₁ + 1), starting from a₁ = 1.</div><div class="feedback" id="f1"></div></div><p class="transition" id="t1"></p></section>
-<section class="screen" id="level2"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 02 / 05</span><span class="pill">A MATING GAME</span></div><h2>Two signals, one rendezvous</h2>
+<section class="screen" id="level2"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 02 / 06</span><span class="pill">A MATING GAME</span></div><h2>Two signals, one rendezvous</h2>
 <div class="story-scene"><div class="scene-art">🛰️ 💫 🛸</div><div class="scene-copy"><div class="scene-label">MISSION LOG 02 · SIGNAL INTERCEPT</div><p>Captain J reaches a relay station and receives two possible signals. One is Vy’s distress beacon. The other is an alien decoy. He must choose whether to synchronise with the signal. Vy is trying to coordinate from the other side.</p></div></div>
 <div class="storyline"><strong>VY’S MESSAGE:</strong> “Captain, if you choose to meet me halfway, I’ll find a way to reach you. Don’t leave me guessing.”</div>
 <p class="muted">Jonathan chooses a row; Vy chooses a column. “Mate” means choosing to rendezvous and pair up. Payoffs are (Jonathan, Vy). They choose simultaneously.</p><table class="matrix"><tr><th></th><th>Vy · Mate</th><th>Vy · No mate</th></tr><tr><th>Jonathan · Mate</th><td>4, 4 ♡</td><td>3, 0</td></tr><tr><th>Jonathan · No mate</th><td>0, 3</td><td>1, 1</td></tr></table><p class="question">If Jonathan chooses “No mate”, Little Sugar gets sad. If Vy chooses “No mate”, Jonathan gets sad. Each would rather pair up, whatever the other chooses. What is the unique pure-strategy Nash equilibrium? Enter the two choices, in order (Jonathan, Vy).</p><input class="field" id="a2" placeholder="e.g. Mate, Mate" onkeydown="if(event.key==='Enter')check(2)"><div class="actions"><button class="btn" onclick="check(2)">Submit the match</button><button class="btn secondary" onclick="hint(2)">Hint 01</button><button class="btn secondary" onclick="hint2(2)">Hint 02</button></div><div class="hint" id="h2">Look at Jonathan’s best response in each column, then Vy’s best response in each row.</div><div class="hint" id="h2b">“Mate” gives each player a higher payoff whether the other chooses Mate or No mate. Find the cell where both are playing their best response.</div><div class="feedback" id="f2"></div></div><p class="transition" id="t2"></p></section>
@@ -68,19 +124,35 @@ body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:radial-g
 </main>
 <script>
 let current=0;const answers={1:['13699'],2:['MATE,MATE','MATEMATE','MATE/MATE'],3:['16.1','16.1%'],4:['8'],5:['13700'],6:['13708']};const transitions={1:'JUMP DRIVE STABLE. First space jump complete. A faint signal from Vy has been detected near the relay station.',2:'RENDEZVOUS CONFIRMED. The signals are aligned. Captain J has the route to Earth’s evacuation corridor.',3:'BUNNY VERIFIED. Captain J welcomes Vy’s assistant aboard. Bunny knows the way to her location — the rescue mission has a new lead.',4:'CIPHER DECRYPTED. The alien gate opens. STATION V2 is now within reach.',5:'PORTAL OPEN. A familiar face is waiting — but Captain J must verify the identity before approaching.'};
-function show(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(n).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function show(n){
+  const old=document.querySelector('.screen.active');
+  const next=document.getElementById(n);
+  if(old&&old!==next){old.classList.add('leaving');setTimeout(()=>old.classList.remove('leaving'),360)}
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  next.classList.add('active');
+  document.body.dataset.level=n==='intro'?'0':n.replace('level','');
+  setMusicTrack(n==='intro'?0:n==='ending'?6:Number(n.replace('level','')));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 function startGame(){current=1;update();show('level1')}
 function update(){document.getElementById('bar').style.width=(current/6*100)+'%';document.getElementById('counter').textContent=current?`EXPERIMENT ${String(current).padStart(2,'0')} / 06`:'NOT YET STARTED'}
 function hint(n){document.getElementById('h'+n).classList.toggle('show')}
 function hint2(n){document.getElementById('h'+n+'b').classList.toggle('show')}
 function normal(v){return v.trim().toUpperCase().replace(/[\s,]+/g,'').replace('−','-')}
-function check(n){let val=normal(document.getElementById('a'+n).value);let ok=answers[n].includes(val);let f=document.getElementById('f'+n);if(ok){sfxCorrect();f.className='feedback good';const messages=['','JUMP DRIVE STABLE. Coordinates locked. Keep going, Captain.','SIGNALS ALIGNED. Little Sugar is still waiting.','BUNNY VERIFIED. Vy’s assistant is aboard. A new lead to her location has been secured.','ACCESS GRANTED. Station V2 unlocked. One final jump remains.','PORTAL OPEN. But the figure waiting on the other side may not be Vy.'];f.textContent=messages[n];document.getElementById('t'+n).textContent=transitions[n]||'';setTimeout(()=>{sfxUnlock();current=n+1;update();show('level'+current)},1100)}else{sfxWrong();f.className='feedback bad';f.textContent='Not quite. Check the mission data and try again.'}}
+function check(n){let val=normal(document.getElementById('a'+n).value);let ok=answers[n].includes(val);let f=document.getElementById('f'+n);if(ok){sfxCorrect();f.className='feedback good';const messages=['','JUMP DRIVE STABLE. Coordinates locked. Keep going, Captain.','SIGNALS ALIGNED. Little Sugar is still waiting.','BUNNY VERIFIED. Vy’s assistant is aboard. A new lead to her location has been secured.','ACCESS GRANTED. Station V2 unlocked. One final jump remains.','PORTAL OPEN. But the figure waiting on the other side may not be Vy.'];f.textContent=messages[n];document.getElementById('t'+n).textContent=transitions[n]||'';setTimeout(()=>{current=n+1;update();show('level'+current);try{sfxUnlock()}catch(e){console.warn('Unlock sound unavailable:',e)}},1100)}else{sfxWrong();f.className='feedback bad';f.textContent='Not quite. Check the mission data and try again.'}}
 function finish(){let val=normal(document.getElementById('a6').value);let f=document.getElementById('f6');if(val!=='13708'){sfxWrong();f.className='feedback bad';f.textContent='Identity verification failed. Check the three mission tokens again.';return}f.className='feedback good';f.textContent='IDENTITY CONFIRMED. Welcome back, Little Sugar.';current=6;update();setTimeout(()=>{show('ending');sfxVictory();drawHeart()},900)}
 function drawHeart(){const p=document.getElementById('heart');let d='';for(let i=0;i<=500;i++){let t=i/500*Math.PI*2;let x=16*Math.pow(Math.sin(t),3);let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);let X=150+x*5.4,Y=130-y*5.4;d+=(i?'L':'M')+X.toFixed(2)+' '+Y.toFixed(2)+' '}p.setAttribute('d',d);let len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len;p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:2600,easing:'ease-in-out',fill:'forwards'})}
-// Original 8-bit soundtrack synthesized in-browser with Web Audio API.
-let audioCtx=null,musicTimer=null,musicOn=false,step=0;
-const melody=[659,784,988,784,587,698,880,698,523,659,784,659,587,698,880,784];
-const bass=[110,0,146.83,0,98,0,130.81,0];
+// Six original procedural chiptune soundtracks, composed for this game.
+// Each level has its own tempo, melody, bass movement and timbre.
+let audioCtx=null,musicTimer=null,musicOn=false,step=0,currentTrack=0;
+const tracks=[
+ {tempo:220,notes:[659,784,988,1175,988,784,587,698,880,1047,880,698,523,659,784,988],bass:[110,0,146.83,0,98,0,130.81,0],wave:'square'},
+ {tempo:190,notes:[784,988,1175,988,880,1047,1319,1047,784,880,988,1175,988,880,784,659],bass:[130.81,0,164.81,0,146.83,0,196,0],wave:'triangle'},
+ {tempo:270,notes:[220,0,262,220,196,0,233,196,174,0,220,196,165,0,196,174],bass:[55,55,65.41,0,49,49,58.27,0],wave:'sawtooth'},
+ {tempo:205,notes:[523,622,784,932,784,622,466,554,698,831,698,554,415,523,622,784],bass:[69.3,0,82.41,0,61.74,0,73.42,0],wave:'square'},
+ {tempo:300,notes:[392,0,587,0,784,0,659,0,440,0,659,0,880,0,784,0],bass:[98,0,110,0,82.41,0,98,0],wave:'sine'},
+ {tempo:185,notes:[523,659,784,1047,988,784,659,784,880,1047,1319,1175,1047,880,784,1047],bass:[130.81,0,164.81,0,196,0,174.61,0],wave:'triangle'}
+];
 function ensureAudio(){
   if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
   if(audioCtx.state==='suspended') audioCtx.resume();
@@ -96,19 +168,27 @@ function beep(freq,duration,when,type='square',volume=.022){
 }
 function playStep(){
   if(!musicOn||!audioCtx)return;
-  const t=audioCtx.currentTime,idx=step%melody.length;
-  beep(melody[idx],.16,t,'square',.012);
-  if(step%2===0)beep(bass[(step/2)%bass.length],.28,t,'triangle',.025);
-  if(step%4===2)beep(melody[idx]*2,.07,t+.08,'sine',.006);
+  const tr=tracks[Math.max(0,Math.min(5,currentTrack-1))]||tracks[0];
+  const t=audioCtx.currentTime,idx=step%tr.notes.length;
+  beep(tr.notes[idx],.17,t,tr.wave,.010);
+  if(step%2===0)beep(tr.bass[(step/2)%tr.bass.length],.31,t,'triangle',.022);
+  if(step%4===2)beep(tr.notes[idx]*2,.065,t+.075,'sine',.005);
+  // A quiet octave shimmer gives each section a little more depth.
+  if(currentTrack===6&&step%4===0)beep(tr.notes[idx]/2,.32,t,'sine',.008);
   step++;
 }
+function setMusicTrack(level){
+  const next=level===0?0:Math.max(1,Math.min(6,level));
+  if(currentTrack===next)return;
+  currentTrack=next;step=0;
+  if(musicOn){clearInterval(musicTimer);playStep();musicTimer=setInterval(playStep,tracks[next===0?0:next-1].tempo);}
+}
 function toggleMusic(){
-  ensureAudio();
-  musicOn=!musicOn;
+  ensureAudio();musicOn=!musicOn;
   const btn=document.getElementById('soundBtn');
   btn.textContent=musicOn?'♫ MUSIC: ON':'♫ MUSIC: OFF';
   btn.setAttribute('aria-pressed',String(musicOn));
-  if(musicOn){playStep();musicTimer=setInterval(playStep,230);}
+  if(musicOn){step=0;playStep();const tr=tracks[currentTrack===0?0:currentTrack-1];musicTimer=setInterval(playStep,tr.tempo);}
   else{clearInterval(musicTimer);musicTimer=null;}
 }
 function sfxCorrect(){
