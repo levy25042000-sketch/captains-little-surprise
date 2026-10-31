@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020"><title>The Little Sugar Experiment</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#17223b;--ink:#f4f1e9;--muted:#aab5ca;--gold:#e7c98b;--cyan:#8edce5;--line:#2c3a56;--good:#a7dfbd;--bad:#f0a6a6}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#1d2b49 0%,var(--bg) 55%);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;min-height:100vh}.wrap{width:min(850px,92vw);margin:auto;padding:34px 0 60px}.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font:12px/1.4 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase}.brand{color:var(--gold)}.progress{height:4px;background:#26334d;border-radius:9px;margin:22px 0 42px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--cyan));transition:width .5s}.screen{display:none;animation:rise .45s ease}.screen.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.eyebrow{color:var(--cyan);font:12px system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}.hero{text-align:center;padding:55px 0 40px}.hero h1{font-size:clamp(40px,8vw,72px);line-height:1.02;font-weight:400;letter-spacing:-.04em;margin:18px 0}.hero h1 span{color:var(--gold);font-style:italic}.sub{color:var(--muted);max-width:570px;margin:18px auto 28px;font-size:18px}.meta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0 36px}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 13px;color:var(--muted);font:12px system-ui,sans-serif}.card{background:linear-gradient(145deg,rgba(23,34,59,.94),rgba(15,23,40,.96));border:1px solid var(--line);border-radius:20px;padding:clamp(22px,5vw,38px);box-shadow:0 20px 70px #0003}.levelhead{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:22px}.levelnum{font:12px system-ui,sans-serif;letter-spacing:.18em;color:var(--gold)}h2{font-size:clamp(29px,5vw,42px);font-weight:400;line-height:1.15;margin:8px 0 12px}p{margin:12px 0}.muted{color:var(--muted)}.question{font-size:20px;margin:25px 0}.equation{font-size:clamp(24px,5vw,38px);text-align:center;letter-spacing:.06em;color:var(--gold);padding:20px 8px;margin:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.matrix{width:100%;border-collapse:collapse;margin:20px 0;text-align:center;font:14px system-ui,sans-serif}.matrix th,.matrix td{border:1px solid var(--line);padding:13px 8px}.matrix th{color:var(--cyan);font-weight:600}.matrix td{color:var(--ink)}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}.choice{background:#10192b;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:14px;cursor:pointer;text-align:left;font:15px system-ui,sans-serif;transition:.2s}.choice:hover,.choice.selected{border-color:var(--gold);background:#202b42}.field{width:100%;background:#0d1526;border:1px solid var(--line);border-radius:12px;padding:15px 16px;color:var(--ink);font:16px system-ui,sans-serif;outline:none}.field:focus{border-color:var(--cyan)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.btn{border:0;border-radius:99px;padding:13px 22px;background:var(--gold);color:#151827;font:600 14px system-ui,sans-serif;cursor:pointer}.btn.secondary{background:transparent;border:1px solid var(--line);color:var(--muted)}.btn:disabled{opacity:.4;cursor:not-allowed}.feedback{min-height:28px;margin-top:14px;font:14px system-ui,sans-serif}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}.hint{display:none;color:var(--muted);font-size:14px;border-left:2px solid var(--gold);padding:8px 14px;margin-top:12px}.hint.show{display:block}.transition{text-align:center;color:var(--gold);font-style:italic;margin:28px 0 0}.heart-wrap{text-align:center;margin:10px auto 25px}.heart-wrap svg{width:min(330px,80vw);filter:drop-shadow(0 0 18px #e7c98b44)}.final{text-align:center;padding:30px 0}.final h2{font-size:clamp(35px,7vw,58px)}.finalquote{font-size:clamp(22px,4vw,30px);color:var(--gold);font-style:italic;max-width:620px;margin:28px auto}.signature{color:var(--muted);margin-top:35px}.small{font:12px system-ui,sans-serif;color:var(--muted)}.foot{text-align:center;margin-top:38px;color:#77849c;font:11px system-ui,sans-serif;letter-spacing:.12em}.hidden{display:none!important}@media(max-width:520px){.sound{top:10px;right:10px;padding:8px 10px}.top{padding-top:34px}.choices{grid-template-columns:1fr}.wrap{padding-top:22px}.hero{padding-top:35px}.levelhead{align-items:flex-start}}
+
+/* Retro arcade layer */
+:root{--bg:#080d1b;--panel:#101a30;--panel2:#172744;--gold:#ffd27a;--cyan:#77e6df;--line:#344568}
+body{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:radial-gradient(ellipse at 50% -10%,#23365b 0%,#080d1b 58%)}
+.card{border-radius:4px;border:2px solid #526487;box-shadow:7px 7px 0 #050914,0 0 35px #77e6df12}
+.btn,.choice,.field{border-radius:3px;font-family:ui-monospace,monospace}
+.btn{box-shadow:3px 3px 0 #9b7841}.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #9b7841}
+.pill{border-radius:2px}.equation{font-family:ui-monospace,monospace;text-shadow:0 0 12px #ffd27a33}
+.hero h1{letter-spacing:-.06em;text-shadow:4px 4px 0 #263a5e}
+.pixel{font-size:12px;color:var(--cyan);letter-spacing:.16em}.sound{position:fixed;right:18px;top:16px;bottom:auto;z-index:20;background:#111d33;border:1px solid #536587;color:var(--gold);padding:10px 13px;border-radius:3px;font:12px ui-monospace,monospace;cursor:pointer}.scanlines{pointer-events:none;position:fixed;inset:0;z-index:4;background:repeating-linear-gradient(0deg,#0000 0px,#0000 3px,#0000000c 4px);opacity:.35}
+.matrix td,.matrix th{font-family:ui-monospace,monospace}.question{font-size:17px}.hint{border-left-color:var(--cyan)}
+
+.story-scene{position:relative;overflow:hidden;min-height:170px;margin:18px 0 22px;border:1px solid #344568;background:linear-gradient(135deg,#182846,#0b1224 72%);display:flex;align-items:center;justify-content:center;gap:18px;padding:20px}
+.story-scene:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 25%,#77e6df22 0 2px,transparent 3px),radial-gradient(circle at 75% 38%,#ffd27a33 0 2px,transparent 3px),radial-gradient(circle at 55% 78%,#ffffff22 0 1px,transparent 2px);background-size:67px 61px,89px 73px,43px 59px;pointer-events:none}
+.scene-art{position:relative;z-index:1;font-size:clamp(48px,10vw,78px);line-height:1;filter:drop-shadow(0 0 12px #77e6df55);white-space:nowrap}
+.scene-copy{position:relative;z-index:1;max-width:430px}
+.scene-label{font:11px ui-monospace,monospace;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase}
+.scene-copy p{color:var(--muted);font:13px/1.6 ui-monospace,monospace;margin:7px 0 0}
+.storyline{border-left:3px solid var(--gold);padding:10px 14px;margin:16px 0;background:#ffd27a0b;color:#d9e1ef;font:13px/1.65 ui-monospace,monospace}
+.storyline strong{color:var(--gold)}
+@media(max-width:560px){.story-scene{align-items:flex-start;flex-direction:column;gap:12px;min-height:0}.scene-art{font-size:54px}}
+
+
+/* HYBRID MOTION UPGRADE: pixel characters over cinematic animated worlds */
+body{overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;opacity:.5;
+ background:
+ radial-gradient(circle at 15% 25%,#8edce522 0 1px,transparent 2px),
+ radial-gradient(circle at 75% 18%,#ffd27a33 0 1.5px,transparent 3px),
+ radial-gradient(circle at 62% 72%,#ffffff22 0 1px,transparent 2px);
+ background-size:83px 79px,127px 111px,59px 67px;
+ animation:starDrift 34s linear infinite}
+@keyframes starDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-90px,70px,0)}}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;
+ background:radial-gradient(ellipse at 50% 45%,var(--world-glow,#77e6df22),transparent 65%);
+ transition:background 1s ease}
+body[data-level="1"]{--world-glow:#367bcf55}
+body[data-level="2"]{--world-glow:#b67bdb44}
+body[data-level="3"]{--world-glow:#7cbd6455}
+body[data-level="4"]{--world-glow:#a15ce955}
+body[data-level="5"]{--world-glow:#e17cbd55}
+body[data-level="6"],body[data-level="ending"]{--world-glow:#ffd27a66}
+.screen{transform-origin:50% 30%}
+.screen.active{animation:cinematicEnter .75s cubic-bezier(.2,.75,.2,1)}
+@keyframes cinematicEnter{0%{opacity:0;transform:translateY(18px) scale(.985);filter:blur(5px)}65%{filter:blur(0)}100%{opacity:1;transform:none}}
+.screen.leaving{animation:cinematicExit .35s ease forwards}
+@keyframes cinematicExit{to{opacity:0;transform:translateY(-9px) scale(1.01);filter:blur(3px)}}
+.story-scene{isolation:isolate;min-height:190px;background:
+ radial-gradient(ellipse at 20% 110%,#77e6df18,transparent 55%),
+ linear-gradient(125deg,#1b2b4c,#0a1123 75%);transition:background 1s,border-color 1s}
+.story-scene:after{content:"";position:absolute;inset:-40% -20%;z-index:0;pointer-events:none;
+ background:linear-gradient(110deg,transparent 38%,#ffffff0b 49%,transparent 60%);
+ transform:translateX(-65%);animation:lightSweep 8s ease-in-out infinite}
+@keyframes lightSweep{0%,35%{transform:translateX(-70%)}75%,100%{transform:translateX(70%)}}
+.scene-art{animation:characterFloat 3.2s ease-in-out infinite;filter:drop-shadow(0 0 13px #77e6df66);transform-origin:50% 70%}
+.scene-art:after{content:"";display:block;height:5px;width:72%;margin:13px auto 0;background:#77e6df33;filter:blur(5px);border-radius:50%;animation:shadowPulse 3.2s ease-in-out infinite}
+@keyframes characterFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes shadowPulse{0%,100%{transform:scaleX(.85);opacity:.45}50%{transform:scaleX(1.15);opacity:.9}}
+.story-scene:before{animation:sceneStars 16s linear infinite}
+@keyframes sceneStars{from{background-position:0 0,0 0,0 0}to{background-position:67px 61px,-89px 73px,43px -59px}}
+body[data-level="1"] .story-scene{background:radial-gradient(ellipse at 50% 120%,#2865a755,transparent 60%),linear-gradient(135deg,#1b3158,#080f20)}
+body[data-level="2"] .story-scene{background:radial-gradient(ellipse at 75% 20%,#9b62b655,transparent 45%),linear-gradient(135deg,#30234d,#101329)}
+body[data-level="3"] .story-scene{background:radial-gradient(ellipse at 18% 100%,#6e9c3c66,transparent 55%),linear-gradient(135deg,#203b36,#101a24)}
+body[data-level="4"] .story-scene{background:radial-gradient(ellipse at 80% 0%,#a15ce955,transparent 50%),linear-gradient(135deg,#30204b,#101329)}
+body[data-level="5"] .story-scene{background:radial-gradient(ellipse at 50% 50%,#d66fb855,transparent 55%),linear-gradient(135deg,#392449,#101329)}
+body[data-level="6"] .story-scene,body[data-level="ending"] .story-scene{background:radial-gradient(ellipse at 50% 50%,#ffd27a55,transparent 58%),linear-gradient(135deg,#44334a,#121a30)}
+body[data-level="3"] .scene-art{animation:characterFloat 1.6s ease-in-out infinite}
+body[data-level="4"] .scene-art{animation:characterFloat 2.2s ease-in-out infinite}
+body[data-level="5"] .scene-art{animation:portalPulse 2.8s ease-in-out infinite}
+@keyframes portalPulse{0%,100%{transform:scale(.96) rotate(-2deg);filter:drop-shadow(0 0 8px #d78bff66)}50%{transform:scale(1.06) rotate(2deg);filter:drop-shadow(0 0 24px #e8aaffcc)}}
+body[data-level="6"] .scene-art,body[data-level="ending"] .scene-art{animation:reunionGlow 2s ease-in-out infinite}
+@keyframes reunionGlow{0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 10px #ffd27a77)}50%{transform:translateY(-8px) scale(1.08);filter:drop-shadow(0 0 28px #ffd27acc)}}
+.feedback.good{animation:successFlash .6s ease}
+@keyframes successFlash{0%{text-shadow:0 0 0 transparent}45%{text-shadow:0 0 18px #a7dfbdcc}100%{text-shadow:none}}
+.btn{transition:transform .16s,filter .2s,box-shadow .2s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+</style>
+</head>
+<body><div class="scanlines"></div><button class="sound" id="soundBtn" type="button" aria-pressed="false" onclick="toggleMusic()">♫ MUSIC: OFF</button><main class="wrap">
+<div class="top"><span class="brand">A small experiment</span><span id="counter">NOT YET STARTED</span></div><div class="progress"><div class="bar" id="bar"></div></div>
+<section class="screen active" id="intro"><div class="hero"><div class="eyebrow">ONE CAPTAIN · SIX EXPERIMENTS · ONE VERY IMPORTANT RESCUE</div><h1>The Little<br><span>Sugar</span> Experiment</h1><p class="sub">Earth is falling to the zombies. Vy has been taken beyond the stars. Captain J is coming for his Little Sugar — but the way home is locked behind six experiments.</p><div class="meta"><span class="pill">SUBJECT · PROF JONATHAN</span><span class="pill">RESEARCH ASSISTANT · LITTLE SUGAR</span><span class="pill">6 EXPERIMENTS</span></div><p class="muted">Six obstacles. Six discoveries. One rescue mission.</p><p class="small">Soundtrack available · switch on ♫ MUSIC to hear six original 8-bit soundtracks.</p><button class="btn" onclick="startGame()">Begin the experiment ↗</button></div></section>
+<section class="screen" id="level1"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 01 / 06</span><span class="pill">RECURSIVE STRUCTURES</span></div><h2>The jump-drive sequence</h2>
+<div class="story-scene"><div class="scene-art">🚀 ✦ 🌌</div><div class="scene-copy"><div class="scene-label">MISSION LOG 01 · DEEP SPACE</div><p>Captain J has launched from Earth. The jump-drive is counting through a recursive sequence, but its next coordinate is missing. Recover the seventh term to stabilise the first space jump.</p></div></div>
+<div class="storyline"><strong>TRANSMISSION FROM VY:</strong> “If you can hear this, Captain, I’m still out here. Please don’t take the scenic route.”</div>
+<p class="muted">The navigation engine follows a recursive rule. Recover the next state.</p><div class="equation">1, 4, 15, 64, 325, 1956, ?</div><p class="question">For n = 2, 3, 4, ... each term is generated by aₙ = n(aₙ₋₁ + 1), with a₁ = 1. What is the seventh term?</p><input class="field" id="a1" inputmode="numeric" placeholder="Enter an integer…" onkeydown="if(event.key==='Enter')check(1)"><div class="actions"><button class="btn" onclick="check(1)">Submit answer</button><button class="btn secondary" onclick="hint(1)">Hint 01</button><button class="btn secondary" onclick="hint2(1)">Hint 02</button></div><div class="hint" id="h1">The transition from a₆ to a₇ uses n = 7.</div><div class="hint" id="h1b">Apply aₙ = n(aₙ₋₁ + 1), starting from a₁ = 1.</div><div class="feedback" id="f1"></div></div><p class="transition" id="t1"></p></section>
+<section class="screen" id="level2"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 02 / 06</span><span class="pill">COORDINATION GAME</span></div><h2>Two signals, two possible rendezvous</h2>
+<div class="story-scene"><div class="scene-art">🛰️ 💫 🛸</div><div class="scene-copy"><div class="scene-label">MISSION LOG 02 · SIGNAL INTERCEPT</div><p>Captain J reaches a relay station and receives two possible signals. One is Vy’s distress beacon. The other is an alien decoy. He must choose whether to synchronise with the signal. Vy is trying to coordinate from the other side.</p></div></div>
+<div class="storyline"><strong>VY’S MESSAGE:</strong> “Captain, if you choose to meet me halfway, I’ll find a way to reach you. Don’t leave me guessing.”</div>
+<p class="muted">Jonathan chooses a row; Vy chooses a column. They must independently navigate to one of two rendezvous beacons, Dock or Beacon. Payoffs are (Jonathan, Vy). They choose simultaneously, without knowing the other’s choice.</p><table class="matrix"><tr><th></th><th>Vy · Dock</th><th>Vy · Beacon</th></tr><tr><th>Jonathan · Dock</th><td>3, 2 ♡</td><td>0, 0</td></tr><tr><th>Jonathan · Beacon</th><td>0, 0</td><td>2, 3</td></tr></table><p class="question">A mismatch leaves both stranded. A successful rendezvous gives each a different payoff depending on the beacon. Identify <strong>all pure-strategy Nash equilibria</strong>. Enter both outcomes in the order (Jonathan, Vy), separated by a semicolon.</p><input class="field" id="a2" placeholder="Enter both equilibria in order…" onkeydown="if(event.key==='Enter')check(2)"><div class="actions"><button class="btn" onclick="check(2)">Lock the rendezvous</button><button class="btn secondary" onclick="hint(2)">Hint 01</button><button class="btn secondary" onclick="hint2(2)">Hint 02</button></div><div class="hint" id="h2">A pure-strategy Nash equilibrium is a cell where neither player can improve their own payoff by changing their choice alone.</div><div class="hint" id="h2b">Check the two coordinated outcomes separately. Then test whether either player would benefit from switching beacons unilaterally.</div><div class="feedback" id="f2"></div></div><p class="transition" id="t2"></p></section>
+<section class="screen" id="level3"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 03 / 06</span><span class="pill">BAYESIAN INFERENCE</span></div><h2>The zombie signal</h2>
+<div class="story-scene"><div class="scene-art">🐰 📡 🌍</div><div class="scene-copy"><div class="scene-label">MISSION LOG 03 · INCOMING SIGNAL FROM EARTH</div><p>Through the static, Captain J receives a distress signal from Earth. A little bunny appears on the screen and claims to be Vy’s assistant, saying they know where she is being held. The transmission is badly corrupted. No one can confirm who is on the other side of the signal.</p></div></div>
+<div class="storyline"><strong>UNKNOWN TRANSMISSION:</strong> “Captain J? It's Bunny. I work with Vy. I know where they're keeping her. The infection scanners are still working — please, let me aboard.”</div>
+<p class="muted">Bunny says they crossed a zombie-infected zone to reach the extraction point. Captain J cannot verify the story yet. The scanner tests for infection with 95% sensitivity and a 5% false-positive rate. Assume the zombie virus affects 1% of the remaining population, and these values are exact.</p><div class="equation">P(C)=0.01 · P(+|C)=0.95 · P(+|¬C)=0.05</div><p class="question">A randomly selected person tests positive. What is P(C | +)? Give your answer as a percentage to one decimal place.</p><input class="field" id="a3" placeholder="Enter a percentage to one decimal place…" onkeydown="if(event.key==='Enter')check(3)"><div class="actions"><button class="btn" onclick="check(3)">Update the probability</button><button class="btn secondary" onclick="hint(3)">Hint 01</button><button class="btn secondary" onclick="hint2(3)">Hint 02</button></div><div class="hint" id="h3">Use Bayes' theorem. The denominator is the total probability of a positive result.</div><div class="hint" id="h3b">Compute (0.95 × 0.01) / [(0.95 × 0.01) + (0.05 × 0.99)].</div><div class="feedback" id="f3"></div></div><p class="transition" id="t3"></p></section>
+<section class="screen" id="level4"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 04 / 06</span><span class="pill">RSA · MODULAR ARITHMETIC</span></div><h2>The alien cipher</h2>
+<div class="story-scene"><div class="scene-art">👽 🔐 🛸</div><div class="scene-copy"><div class="scene-label">MISSION LOG 04 · ALIEN TERRITORY</div><p>Captain J is intercepted by an alien patrol near Station V2. The aliens have locked the navigation gate and encrypted the access code. Decrypt the transmission to restore the route to Vy.</p></div></div>
+<div class="storyline"><strong>ALIEN TRANSMISSION:</strong> “Human pilot. Your destination is sealed. Recover the plaintext, and the gate to Station V2 will open.”</div>
+<p class="muted">A toy RSA system uses p = 5, q = 11 and public exponent e = 3. The ciphertext is c = 17. Use the standard RSA decryption procedure.</p><div class="equation">n = pq = 55 &nbsp; · &nbsp; φ(n) = 40</div><p class="question">Find the plaintext m, where m ≡ cᵈ (mod n) and d is the modular inverse of e modulo φ(n). Enter the integer m.</p><input class="field" id="a4" inputmode="numeric" placeholder="Recovered plaintext…" onkeydown="if(event.key==='Enter')check(4)"><div class="actions"><button class="btn" onclick="check(4)">Decrypt</button><button class="btn secondary" onclick="hint(4)">Hint 01</button><button class="btn secondary" onclick="hint2(4)">Hint 02</button></div><div class="hint" id="h4">First solve 3d ≡ 1 (mod 40) using the extended Euclidean algorithm.</div><div class="hint" id="h4b">d = 27. Now calculate 17²⁷ mod 55 using repeated squaring.</div><div class="feedback" id="f4"></div></div><p class="transition" id="t4"></p></section>
+<section class="screen" id="level5"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 05 / 06</span><span class="pill">COURNOT DUOPOLY</span></div><h2>The market-clearing code</h2>
+<div class="story-scene"><div class="scene-art">🏭 ⚡ 🛸</div><div class="scene-copy"><div class="scene-label">MISSION LOG 05 · THE ALIEN ENERGY MARKET</div><p>The portal is powered by an alien energy market controlled by two rival suppliers. Both firms choose how much energy to generate at the same time. Captain J must predict their Cournot equilibrium to calculate the portal's activation code.</p></div></div>
+<div class="storyline"><strong>LAST MESSAGE FROM VY:</strong> “Almost there, Captain. Think carefully about what each supplier will produce when neither can improve by changing output alone.”</div>
+<p class="muted">Two identical firms compete in quantities. Market inverse demand is P = 150 − Q, where Q = q₁ + q₂. Each firm has constant marginal cost MC = 30 and zero fixed cost. They choose quantities simultaneously.</p>
+<div class="equation">πᵢ = (P − 30)qᵢ &nbsp; · &nbsp; P = 150 − q₁ − q₂</div>
+<p class="question">Find the <strong>symmetric Cournot-Nash equilibrium</strong>. Calculate each firm's equilibrium output, then the total market output Q* and equilibrium price P*. The portal code is <strong>Q* + P*</strong>. Enter the resulting integer.</p>
+<input class="field" id="a5" inputmode="numeric" placeholder="Enter the portal activation code…" onkeydown="if(event.key==='Enter')check(5)">
+<p class="small">Assume both firms are profit-maximising and there are no capacity constraints.</p>
+<div class="actions"><button class="btn" onclick="check(5)">Activate the portal ↗</button><button class="btn secondary" onclick="hint(5)">Need a hint?</button><button class="btn secondary" onclick="hint2(5)">Second hint</button></div>
+<div class="hint" id="h5">Write firm 1's profit as π₁ = (150 − q₁ − q₂ − 30)q₁. Differentiate with respect to q₁ to obtain its best-response function.</div>
+<div class="hint" id="h5b">In a symmetric equilibrium q₁ = q₂. Solve both best responses to get each firm's output. Then calculate Q* = q₁ + q₂, P* = 150 − Q*, and add Q* + P*.</div>
+<div class="feedback" id="f5"></div></div></section>
+
+<section class="screen" id="level6"><div class="card"><div class="levelhead"><span class="levelnum">EXPERIMENT 06 / 06</span><span class="pill">IDENTITY VERIFICATION</span></div><h2>Is that really Vy?</h2>
+<div class="story-scene"><div class="scene-art">🌀 👩‍🚀 💗</div><div class="scene-copy"><div class="scene-label">MISSION LOG 06 · THE UNKNOWN SPACE</div><p>Captain J crosses the portal into a strange pocket of space. A figure appears — she looks like Vy, sounds like Vy, and knows Captain J’s name. But the aliens are known to create convincing copies. Bunny warned him: “Don't trust appearances. The real Vy will know the mission code we built together.”</p></div></div>
+<div class="storyline"><strong>INCOMING TRANSMISSION:</strong> “Captain… it's me. I knew you'd come. But you'll have to prove you remember our journey.”</div>
+<p class="muted">The real Vy can verify three mission tokens: the seventh term from Experiment 01, the decrypted plaintext from Experiment 04, and Bunny’s rendezvous token from Experiment 02.</p>
+<div class="equation">13,699 + 8 + 1 = ?</div>
+<p class="question">Enter the combined verification code. If the figure is the real Vy, the code will unlock her containment field.</p>
+<input class="field" id="a6" inputmode="numeric" placeholder="Identity verification code…" onkeydown="if(event.key==='Enter')finish()">
+<div class="actions"><button class="btn" onclick="finish()">Verify identity</button><button class="btn secondary" onclick="hint(6)">Need a hint?</button></div>
+<div class="hint" id="h6">Use the three tokens recovered earlier: 13,699 from the jump drive, 8 from the alien cipher, and 1 from Bunny’s rendezvous signal.</div>
+<div class="feedback" id="f6"></div></div></section>
+<section class="screen" id="ending"><div class="final"><div class="eyebrow">PORTAL OPEN · IDENTITY UNCONFIRMED</div><h2>Not so fast,<br><span style="color:var(--gold);font-style:italic">Captain J.</span></h2><div class="heart-wrap"><svg viewBox="0 0 300 270" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="heart" d="" stroke="#e7c98b" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="story-scene"><div class="scene-art">🚀 🤍 🧁</div><div class="scene-copy"><div class="scene-label">IDENTITY VERIFIED · RESCUE CONFIRMED</div><p>The containment field dissolves. It really is Vy. Bunny’s coordinates were right — Captain J has found his Little Sugar.</p></div></div><p class="muted">Six experiments solved. The real Vy is finally here.</p><p class="finalquote">You crossed galaxies, decoded secrets and outsmarted the odds.<br><strong>Turns out, the hardest thing to decrypt was not a message. It was finding the real me.</strong></p><p class="signature">Your Little Sugar ♡</p><button class="btn secondary" onclick="location.reload()">Run the experiment again</button></div></section>
+<div class="foot">A PRIVATE EXPERIMENT BY VY · MADE WITH CURIOSITY ♡</div>
+</main>
+<script>
+let current=0;const answers={1:['13699'],2:['DOCKDOCK;BEACONBEACON','BEACONBEACON;DOCKDOCK','DOCK/DOCK;BEACON/BEACON','BEACON/BEACON;DOCK/DOCK'],3:['16.1','16.1%'],4:['8'],5:['150'],6:['13708']};const transitions={1:'JUMP DRIVE STABLE. First space jump complete. A faint signal from Vy has been detected near the relay station.',2:'RENDEZVOUS CONFIRMED. Two stable rendezvous points are identified. Captain J can now assess the incoming signal.',3:'SCANNER RESULT RECORDED. Captain J has assessed the infection risk. The source of the signal and Bunny identity still needs independent confirmation.',4:'CIPHER DECRYPTED. The alien gate opens. STATION V2 is now within reach.',5:'COURNOT EQUILIBRIUM FOUND. The alien energy market stabilises, and the portal powers up. A familiar face is waiting beyond it — but identity remains unconfirmed.'};
+function show(n){
+  const old=document.querySelector('.screen.active');
+  const next=document.getElementById(n);
+  if(old&&old!==next){old.classList.add('leaving');setTimeout(()=>old.classList.remove('leaving'),360)}
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  next.classList.add('active');
+  document.body.dataset.level=n==='intro'?'0':n.replace('level','');
+  setMusicTrack(n==='intro'?0:n==='ending'?6:Number(n.replace('level','')));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function startGame(){current=1;update();show('level1')}
+function update(){document.getElementById('bar').style.width=(current/6*100)+'%';document.getElementById('counter').textContent=current?`EXPERIMENT ${String(current).padStart(2,'0')} / 06`:'NOT YET STARTED'}
+function hint(n){document.getElementById('h'+n).classList.toggle('show')}
+function hint2(n){document.getElementById('h'+n+'b').classList.toggle('show')}
+function normal(v){return v.trim().toUpperCase().replace(/[\s,]+/g,'').replace('−','-')}
+function check(n){let val=normal(document.getElementById('a'+n).value);let ok=answers[n].includes(val);let f=document.getElementById('f'+n);if(ok){sfxCorrect();f.className='feedback good';const messages=['','JUMP DRIVE STABLE. Coordinates locked. Keep going, Captain.','BOTH ROUTES MAPPED. Captain J has identified the two stable rendezvous outcomes.','SCANNER CHECK COMPLETE. The infection-risk assessment is in. Captain J still needs to establish whether this stranger is really Bunny.','ACCESS GRANTED. Station V2 unlocked. One final jump remains.','MARKET EQUILIBRIUM FOUND. The portal is powered. But the figure waiting on the other side may not be Vy.'];f.textContent=messages[n];const transitionEl=document.getElementById('t'+n);if(transitionEl)transitionEl.textContent=transitions[n]||'';setTimeout(()=>{current=n+1;update();show('level'+current);try{sfxUnlock()}catch(e){console.warn('Unlock sound unavailable:',e)}},1100)}else{sfxWrong();f.className='feedback bad';f.textContent='Not quite. Check the mission data and try again.'}}
+function finish(){let val=normal(document.getElementById('a6').value);let f=document.getElementById('f6');if(val!=='13708'){sfxWrong();f.className='feedback bad';f.textContent='Identity verification failed. Check the three mission tokens again.';return}f.className='feedback good';f.textContent='IDENTITY CONFIRMED. Welcome back, Little Sugar.';current=6;update();setTimeout(()=>{show('ending');sfxVictory();drawHeart()},900)}
+function drawHeart(){const p=document.getElementById('heart');let d='';for(let i=0;i<=500;i++){let t=i/500*Math.PI*2;let x=16*Math.pow(Math.sin(t),3);let y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);let X=150+x*5.4,Y=130-y*5.4;d+=(i?'L':'M')+X.toFixed(2)+' '+Y.toFixed(2)+' '}p.setAttribute('d',d);let len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len;p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:2600,easing:'ease-in-out',fill:'forwards'})}
+// Six original procedural chiptune soundtracks, composed for this game.
+// Each level has its own tempo, melody, bass movement and timbre.
+let audioCtx=null,musicTimer=null,musicOn=false,step=0,currentTrack=0;
+const tracks=[
+ {tempo:220,notes:[659,784,988,1175,988,784,587,698,880,1047,880,698,523,659,784,988],bass:[110,0,146.83,0,98,0,130.81,0],wave:'square'},
+ {tempo:190,notes:[784,988,1175,988,880,1047,1319,1047,784,880,988,1175,988,880,784,659],bass:[130.81,0,164.81,0,146.83,0,196,0],wave:'triangle'},
+ {tempo:270,notes:[220,0,262,220,196,0,233,196,174,0,220,196,165,0,196,174],bass:[55,55,65.41,0,49,49,58.27,0],wave:'sawtooth'},
+ {tempo:205,notes:[523,622,784,932,784,622,466,554,698,831,698,554,415,523,622,784],bass:[69.3,0,82.41,0,61.74,0,73.42,0],wave:'square'},
+ {tempo:300,notes:[392,0,587,0,784,0,659,0,440,0,659,0,880,0,784,0],bass:[98,0,110,0,82.41,0,98,0],wave:'sine'},
+ {tempo:185,notes:[523,659,784,1047,988,784,659,784,880,1047,1319,1175,1047,880,784,1047],bass:[130.81,0,164.81,0,196,0,174.61,0],wave:'triangle'}
+];
+function ensureAudio(){
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+}
+function beep(freq,duration,when,type='square',volume=.022){
+  if(!audioCtx||!freq)return;
+  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+  o.type=type;o.frequency.setValueAtTime(freq,when);
+  g.gain.setValueAtTime(.0001,when);
+  g.gain.exponentialRampToValueAtTime(volume,when+.012);
+  g.gain.exponentialRampToValueAtTime(.0001,when+duration);
+  o.connect(g);g.connect(audioCtx.destination);o.start(when);o.stop(when+duration+.02);
+}
+function playStep(){
+  if(!musicOn||!audioCtx)return;
+  const tr=tracks[Math.max(0,Math.min(5,currentTrack-1))]||tracks[0];
+  const t=audioCtx.currentTime,idx=step%tr.notes.length;
+  beep(tr.notes[idx],.17,t,tr.wave,.010);
+  if(step%2===0)beep(tr.bass[(step/2)%tr.bass.length],.31,t,'triangle',.022);
+  if(step%4===2)beep(tr.notes[idx]*2,.065,t+.075,'sine',.005);
+  // A quiet octave shimmer gives each section a little more depth.
+  if(currentTrack===6&&step%4===0)beep(tr.notes[idx]/2,.32,t,'sine',.008);
+  step++;
+}
+function setMusicTrack(level){
+  const next=level===0?0:Math.max(1,Math.min(6,level));
+  if(currentTrack===next)return;
+  currentTrack=next;step=0;
+  if(musicOn){clearInterval(musicTimer);playStep();musicTimer=setInterval(playStep,tracks[next===0?0:next-1].tempo);}
+}
+function toggleMusic(){
+  ensureAudio();musicOn=!musicOn;
+  const btn=document.getElementById('soundBtn');
+  btn.textContent=musicOn?'♫ MUSIC: ON':'♫ MUSIC: OFF';
+  btn.setAttribute('aria-pressed',String(musicOn));
+  if(musicOn){step=0;playStep();const tr=tracks[currentTrack===0?0:currentTrack-1];musicTimer=setInterval(playStep,tr.tempo);}
+  else{clearInterval(musicTimer);musicTimer=null;}
+}
+function sfxCorrect(){
+  if(!musicOn)return;ensureAudio();const t=audioCtx.currentTime;
+  [784,988,1175].forEach((f,i)=>beep(f,.13,t+i*.085,'square',.035));
+}
+function sfxWrong(){
+  if(!musicOn)return;ensureAudio();const t=audioCtx.currentTime;
+  beep(180,.12,t,'sawtooth',.025);beep(130,.16,t+.11,'square',.018);
+}
+function sfxUnlock(){
+  if(!musicOn)return;ensureAudio();const t=audioCtx.currentTime;
+  [523,659,784,1047].forEach((f,i)=>beep(f,.19,t+i*.11,'square',.03));
+}
+function sfxVictory(){
+  if(!musicOn)return;ensureAudio();const t=audioCtx.currentTime;
+  [523,659,784,1047,1319,1568].forEach((f,i)=>beep(f,.34,t+i*.16,'triangle',.035));
+}
+</script></body></html>
